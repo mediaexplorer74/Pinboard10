@@ -1,6 +1,6 @@
 # Pinboard10
 
-My fork of Pinboard8 project for a little RnD / win10/win10mobile uwp renovation :)
+My fork of Pinboard8 project for a little RnD // win10/win10mobile uwp renovation. Just-for-fun :)
 
 ## About 
 
@@ -9,12 +9,19 @@ This is UWP Client for Pinboard.in site (used api.pinboard.in web service).
 ## Screenshots
 
 ![Screenshot 1](Images/shot1.png)
+![Screenshot 2](Images/shot2.png)
 
 ## Status
 
 - R.E./Dev. approx. 15-20 % 
 - Not completed yet
 - No multi-platform (No Android, no iOS..)
+
+## Tech. details
+
+- UWP
+- Req. os build :: 19041
+- Min. os. build :: 14393 
 
 ## How-to / DIY
 If you have some dev. chakra and have no money, contact the support for some trial days and sign-up at pinboard.in.
