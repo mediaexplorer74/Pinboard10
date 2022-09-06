@@ -1,4 +1,6 @@
-﻿using System;
+﻿// NavigationHelper
+
+using System;
 using System.Collections.Generic;
 using Windows.System;
 using Windows.UI.Core;

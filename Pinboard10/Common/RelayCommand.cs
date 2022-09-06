@@ -1,4 +1,6 @@
-﻿using System;
+﻿// RelayCommand
+
+using System;
 using System.Windows.Input;
 
 namespace Pinboard10.Common

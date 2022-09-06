@@ -1,4 +1,6 @@
-﻿using System;
+﻿// TagPosts
+
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Windows.UI.Xaml;
@@ -9,23 +11,23 @@ using PinboardDomain.Model;
 using PinboardDomain.Repository;
 using PinboardDomain.ViewModels;
 
-// The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
+// Pinboard10 namespace
 namespace Pinboard10
 {
-    /// <summary>
-    /// A basic page that provides characteristics common to most applications.
-    /// </summary>
+    // TagPosts class
     public sealed partial class TagPosts : Page
     {
-
+        // nav. helper
         private NavigationHelper navigationHelper;
+
+        // default vm
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        
+        // all tags
         private ObservableCollection<ITag> _allTags;
 
-        /// <summary>
-        /// This can be changed to a strongly typed view model.
-        /// </summary>
+        // default vm
         public ObservableDictionary DefaultViewModel
         {
             get { return this.defaultViewModel; }
@@ -41,14 +43,18 @@ namespace Pinboard10
         }
 
 
+        // TagPosts
         public TagPosts()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
+
             BottomBar.Closed += BottomBarClosed;
-        }
+
+        }//TagPosts end
+
 
         /// <summary>
         /// Populates the page with content passed during navigation. Any saved state is also
@@ -61,12 +67,17 @@ namespace Pinboard10
         /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
         /// a dictionary of state preserved by this page during an earlier
         /// session. The state will be null the first time a page is visited.</param>
+
+        // navigationHelper_LoadState
         private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            var api = new PinboardApiWrapper();
+            PinboardApiWrapper api = new PinboardApiWrapper();
+            
             this.DataContext = new TagPostsViewModel(api, e.NavigationParameter as string);
+
             _allTags = await api.GetTagsAsync();
-        }
+        }//navigationHelper_LoadState end
+
 
         /// <summary>
         /// Preserves state associated with this page in case the application is suspended or the
@@ -76,9 +87,13 @@ namespace Pinboard10
         /// <param name="sender">The source of the event; typically <see cref="NavigationHelper"/></param>
         /// <param name="e">Event data that provides an empty dictionary to be populated with
         /// serializable state.</param>
+        /// 
+        // navigationHelper_SaveState
         private void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
-        }
+            //
+        }//navigationHelper_SaveState end
+
 
         #region NavigationHelper registration
 
@@ -91,31 +106,43 @@ namespace Pinboard10
         /// The navigation parameter is available in the LoadState method 
         /// in addition to page state preserved during an earlier session.
 
+        // OnNavigatedTo
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
-        }
+        }//OnNavigatedTo end
 
+
+        // OnNavigatedFrom
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedFrom(e);
-        }
+
+        }//OnNavigatedFrom end
 
         #endregion
 
+
+        // PostSelected
         private void PostSelected(object sender, SelectionChangedEventArgs e)
         {
             if (PostsListView.SelectedItem != null)
             {
                 BottomBar.IsOpen = true;
             }
-        }
 
+        }//PostSelected end
+
+
+        // BottomBarClosed
         private void BottomBarClosed(object sender, object e)
         {
             PostsListView.SelectedItem = null;
-        }
 
+        }//BottomBarClosed end
+
+
+        // AppBar_EditButton_Click
         private void AppBar_EditButton_Click(object sender, RoutedEventArgs e)
         {
             var post = PostsListView.SelectedItem as Bookmark;
@@ -128,8 +155,11 @@ namespace Pinboard10
                 Time = post.Time,
                 AllTags = _allTags.ToList()
             };
+            
             appBarButton.DataContext = post;
-        }
-        
-    }
-}
+
+        }//AppBar_EditButton_Click end
+
+    }//class end
+
+}//namespace end

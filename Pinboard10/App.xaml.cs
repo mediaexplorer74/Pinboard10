@@ -1,4 +1,6 @@
-﻿using System;
+﻿// App
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -42,7 +44,7 @@ namespace Pinboard10
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                this.DebugSettings.EnableFrameRateCounter = true;
+               // this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
             Frame rootFrame = Window.Current.Content as Frame;
@@ -102,5 +104,7 @@ namespace Pinboard10
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
-    }
-}
+    
+    }//class end
+
+}//namespace end
