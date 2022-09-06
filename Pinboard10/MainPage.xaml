@@ -28,7 +28,7 @@
                                     <TextBlock Text="Rename Tag" FontSize="30" Margin="5,5,5,10" />
                                     <TextBlock Text="Type in the new tag name and tap the Rename button" Margin="5,0,5,10" FontSize="14"/>
                                     <TextBox x:Name="TagName" Margin="5, 0, 5, 10"/>
-                                    <Button Content="Rename" Click="RenameButton_Click" Margin="5, 0, 5,5"/>
+                                    <!--Button Content="Rename" Click="RenameButton_Click" Margin="5, 0, 5, 5"/-->
                                 </StackPanel>
                             </Flyout>
                         </AppBarButton.Flyout>
@@ -43,24 +43,31 @@
 
         <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
+            <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="600"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         
 
-            <TextBlock Grid.Column="0" Grid.Row="0" FontSize="42" Text="Recent Bookmarks" Margin="20,56,0,20" Foreground="White"></TextBlock>
-            <ListBox Grid.Column="0" Grid.Row="1" x:Name="RecentBookmarks" ItemsSource="{Binding RecentBookmarks}" Width="450" ItemTemplate="{StaticResource BookmarkDataTemplate}" 
+            <TextBlock Grid.Column="0" Grid.Row="0" FontSize="24" Text="Recent Bookmarks" Margin="10,26,0,10" Foreground="DarkCyan"></TextBlock>
+            <ListBox Grid.Column="0" Grid.Row="1" x:Name="RecentBookmarks" ItemsSource="{Binding RecentBookmarks}" Width="300" ItemTemplate="{StaticResource BookmarkDataTemplate}" 
                       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
                 
             </ListBox>
-            <TextBlock  Grid.Column="1" Grid.Row="0" FontSize="42" Text="My Tags" Margin="20,56,0,20"/>
-            <ListView x:Name="TagListView" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Tags}" ScrollViewer.VerticalScrollBarVisibility="Disabled" 
-                        ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Disabled"
-                        ScrollViewer.HorizontalScrollMode="Auto" ScrollViewer.ZoomMode="Disabled" Height="Auto" Margin="50,10,10,10" SelectionChanged="TagSelected">
+            <TextBlock  Grid.Column="1" Grid.Row="0" FontSize="16" Text="My Tags" 
+                        Margin="20,36,0,20"/>
+            <ListView x:Name="TagListView" Grid.Column="1" Grid.Row="1" 
+                      ItemsSource="{Binding Tags}" 
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                      ScrollViewer.VerticalScrollMode="Disabled"
+                      ScrollViewer.HorizontalScrollMode="Auto" 
+                      ScrollViewer.ZoomMode="Disabled" 
+                      Height="Auto" Margin="10,2,2,2" 
+                      SelectionChanged="TagSelected">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapGrid Orientation="Vertical" />
@@ -68,7 +75,11 @@
                         </ListView.ItemsPanel>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <HyperlinkButton Width="150" Height="75"  Background="Blue" Foreground="White"  Click="ButtonClick"
+                                <HyperlinkButton Width="80" 
+                                                 Height="35"  
+                                                 Background="Blue" 
+                                                 Foreground="White"  
+                                                 Click="ButtonClick"
                                Content="{Binding Name}">
                                 </HyperlinkButton>
                             </DataTemplate>

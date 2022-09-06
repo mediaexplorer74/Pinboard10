@@ -78,8 +78,15 @@ namespace Pinboard10
         private void AppBar_RenameButton_Click(object sender, RoutedEventArgs e)
         {
             Tag selectedTag = TagListView.SelectedItem as Tag;
-            
-            TagName.Text = selectedTag.Name;
+
+            if (selectedTag != null)
+            {
+                TagName.Text = selectedTag.Name;
+            }
+            else
+            {
+                // TODO: No Selected Tag popup
+            }
 
         }//AppBar_RenameButton_Click end
 
